@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $cuentas_autorizadas = [
     '68020274' => ['tipo' => 'VIP', 'expira' => '2025-10-25', 'max_posiciones' => 10],
+    '307921434' => ['tipo' => 'VIP', 'expira' => '2025-10-25', 'max_posiciones' => 10],
 ];
 
 $account = $_POST['account'] ?? $_GET['account'] ?? '0';
