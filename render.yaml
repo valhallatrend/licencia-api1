@@ -1,0 +1,6 @@
+
+services:
+  - type: web
+    name: licencia-api
+    env: docker
+    plan: free
