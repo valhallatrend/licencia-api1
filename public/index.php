@@ -8,15 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 
-$cuentas_autorizadas = [
-    '68020274' => ['tipo' => 'VIP', 'expira' => '2025-10-25', 'max_posiciones' => 10],
-    '307921434' => ['tipo' => 'VIP', 'expira' => '2025-10-25', 'max_posiciones' => 10],
-];
+// Leer cuentas desde archivo JSON
+$cuentas_json = file_get_contents(__DIR__ . '/cuentas.json');
+$cuentas_autorizadas = json_decode($cuentas_json, true);
 
+// Obtener datos
 $account = $_POST['account'] ?? $_GET['account'] ?? '0';
 $broker = $_POST['broker'] ?? $_GET['broker'] ?? '';
 $ea_version = $_POST['ea_version'] ?? $_GET['ea_version'] ?? '';
 
+// Verificar cuenta
 if (isset($cuentas_autorizadas[$account])) {
     $licencia = $cuentas_autorizadas[$account];
     $fecha_expira = strtotime($licencia['expira']);
